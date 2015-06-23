@@ -2,6 +2,11 @@ class DaysController < ApplicationController
   before_action :set_day, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  expose(:blueberry)
+  expose(:raspberry)
+  expose(:blackberry)
+  expose(:hour)
+
   # GET /days
   # GET /days.json
   def index
@@ -26,7 +31,7 @@ class DaysController < ApplicationController
   # POST /days
   # POST /days.json
   def create
-    @day = Day.new(day_params)
+    @day = current_user.days.build(day_params)
 
     respond_to do |format|
       if @day.save

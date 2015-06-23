@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623155315) do
+ActiveRecord::Schema.define(version: 20150623184813) do
+
+  create_table "blackberries", force: :cascade do |t|
+    t.integer  "day_id"
+    t.float    "kg"
+    t.float    "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "blueberries", force: :cascade do |t|
     t.float    "kg"
@@ -25,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150623155315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date     "date"
+    t.integer  "user_id"
   end
 
   create_table "hours", force: :cascade do |t|
