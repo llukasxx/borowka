@@ -16,6 +16,7 @@ gem 'simple_form'
 gem 'haml-rails'
 gem 'cancancan'
 gem 'sqlite3'
+gem 'devise-bootstrap-views'
 
 group :development, :test do
   gem 'rspec-rails'

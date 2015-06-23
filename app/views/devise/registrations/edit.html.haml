@@ -1,0 +1,33 @@
+.panel.panel-info
+  .panel-heading
+    %h4= t('.title', :resource => resource_class.model_name.human , :default => 'Edit #{resource_name.to_s.humanize}')
+  .panel-body
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+      .form-group
+        = f.label :imię
+        = f.text_field :firstname, autofocus: true, class: "form-control"
+      .form-group
+        = f.label :nazwisko
+        = f.text_field :lastname, autofocus: true, class: "form-control"
+      .form-group
+        = f.label :email
+        = f.email_field :email, autofocus: true, class: "form-control"
+      .form-group
+        = f.label :hasło
+        %i
+          "Zostaw puste jeżeli nie chcesz zmieniać"
+        %br/
+        = f.password_field :password, :autocomplete => "off", class: "form-control"
+      .form-group
+        = f.label :potwierdznie_hasła
+        %br/
+        = f.password_field :password_confirmation, class: "form-control"
+      .form-group
+        = f.label :aktualne_hasło
+        %i
+          "Aktualne hasło jest potrzebne aby potwierdzić zmiany"
+        = f.password_field :current_password, class: "form-control"
+      = f.submit "Potwierdź", class: "btn btn-primary"
+%p
+
+= link_to "Back", :back

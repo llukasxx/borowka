@@ -74,6 +74,7 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-bootstrap-views (0.0.5)
     diff-lcs (1.2.5)
     draper (2.1.0)
       actionpack (>= 3.0)
@@ -231,6 +232,7 @@ DEPENDENCIES
   decent_decoration
   decent_exposure
   devise
+  devise-bootstrap-views
   draper
   factory_girl_rails
   faker
