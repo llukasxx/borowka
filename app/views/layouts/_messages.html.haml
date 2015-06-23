@@ -1,0 +1,8 @@
+- flash.each do |key, value|
+  -key = "danger" if key == "alert"
+  -key = "success" if key == "notice"
+  %div{:class => "alert alert-#{key}", :role => "alert"}
+    %a.close{"data-dismiss" => "alert", :href => "#"} ×
+    %ul
+      %li
+        = value
