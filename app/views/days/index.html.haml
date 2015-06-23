@@ -15,8 +15,8 @@
         %td= link_to 'Destroy', day, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
+
 =simple_form_for @day do |f|
   =f.input :date, :as => :date_picker
   =f.button :submit
-
 = link_to 'Dodaj dniówke', new_day_path, class: "btn btn-success btn", role: "button"

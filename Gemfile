@@ -18,6 +18,7 @@ gem 'cancancan'
 gem 'devise-bootstrap-views'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails', '>= 2.8.1',  :github => 'derekprior/momentjs-rails'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'rspec-rails'
