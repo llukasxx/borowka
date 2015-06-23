@@ -15,7 +15,6 @@ gem 'devise'
 gem 'simple_form'
 gem 'haml-rails'
 gem 'cancancan'
-gem 'sqlite3'
 gem 'devise-bootstrap-views'
 
 group :development, :test do
@@ -24,6 +23,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'byebug'
   gem 'capybara'
+  gem 'sqlite3'
 end
 
 group :test do
