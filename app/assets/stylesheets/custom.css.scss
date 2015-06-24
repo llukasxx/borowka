@@ -10,4 +10,12 @@ footer.footer {
 .well {
   padding-bottom: 5px;
 }
+.go-right {
+  float: right;
+}
 
+input {
+  &#day_blueberry_kg, &#day_raspberry_kg, &#day_blackberry_kg, &#day_hour_amount {
+    width: 100px;
+  }
+}

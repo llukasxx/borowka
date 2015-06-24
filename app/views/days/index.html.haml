@@ -21,6 +21,7 @@
       .input-group
         = d.label "Data: "
         = d.input :date, :as => :date_picker, label: false
+      .input-group
         = d.simple_fields_for blueberry do |b|
           =b.label "Borówka: "
           =b.input :kg, label: false
@@ -28,6 +29,7 @@
             %em kurs:
             %br
             1.0
+      .input-group
         = d.simple_fields_for raspberry do |b|
           =b.label "Malina: "
           =b.input :kg, label: false
@@ -35,6 +37,7 @@
             %em kurs:
             %br
             1.0
+      .input-group
         = d.simple_fields_for blackberry do |b|
           =b.label "Jeżyna: "
           =b.input :kg, label: false
@@ -42,6 +45,7 @@
             %em kurs:
             %br
             1.0
+      .input-group
         = d.simple_fields_for hour do |b|
           =b.label "Godziny:"
           =b.input :amount, label: false
@@ -50,6 +54,7 @@
             %br
             5.0
 
-    = d.button :button, class: "btn btn-success" do
+    = d.button :button, class: "btn btn-success go-right" do
       Dodaj
+
 = link_to 'Dodaj dniówke', new_day_path, class: "btn btn-info btn", role: "button"
