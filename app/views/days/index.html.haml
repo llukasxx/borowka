@@ -1,4 +1,4 @@
-%h1 Wszystkie dni
+%h1 Dniówki
 
 %table
   %thead
@@ -15,46 +15,47 @@
         %td= link_to 'Destroy', day, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
-.well
-  =simple_form_for @day, html:{class: "form-inline"} do |d|
-    .form-group
-      .input-group
-        = d.label "Data: "
-        = d.input :date, :as => :date_picker, label: false
-      .input-group
-        = d.simple_fields_for blueberry do |b|
-          =b.label "Borówka: "
-          =b.input :kg, label: false
-          .input-group-addon
-            %em kurs:
-            %br
-            1.0
-      .input-group
-        = d.simple_fields_for raspberry do |b|
-          =b.label "Malina: "
-          =b.input :kg, label: false
-          .input-group-addon
-            %em kurs:
-            %br
-            1.0
-      .input-group
-        = d.simple_fields_for blackberry do |b|
-          =b.label "Jeżyna: "
-          =b.input :kg, label: false
-          .input-group-addon
-            %em kurs:
-            %br
-            1.0
-      .input-group
-        = d.simple_fields_for hour do |b|
-          =b.label "Godziny:"
-          =b.input :amount, label: false
-          .input-group-addon
-            %em kurs:
-            %br
-            5.0
+=simple_form_for @day, html:{class: "form-inline well hidden"} do |d|
+  .form-group
+    .input-group
+      = d.label "Data: "
+      = d.input :date, :as => :date_picker, label: false, input_html: { value: Time.now.strftime("%d/%m/%Y") }
+    .input-group
+      = d.simple_fields_for blueberry do |b|
+        =b.label "Borówka: "
+        =b.input :kg, label: false, input_html: { min: '0', value: '0' }
+        .input-group-addon
+          %em kurs:
+          %br
+          1.0
+    .input-group
+      = d.simple_fields_for raspberry do |b|
+        =b.label "Malina: "
+        =b.input :kg, label: false, input_html: { min: '0', value: '0' }
+        .input-group-addon
+          %em kurs:
+          %br
+          1.0
+    .input-group
+      = d.simple_fields_for blackberry do |b|
+        =b.label "Jeżyna: "
+        =b.input :kg, label: false, input_html: { min: '0', value: '0' }
+        .input-group-addon
+          %em kurs:
+          %br
+          1.0
+    .input-group
+      = d.simple_fields_for hour do |b|
+        =b.label "Godziny:"
+        =b.input :amount, label: false, input_html: { min: '0', value: '0' }
+        .input-group-addon
+          %em kurs:
+          %br
+          5.0
 
-    = d.button :button, class: "btn btn-success go-right" do
-      Dodaj
+  = d.button :button, class: "btn btn-success go-right" do
+    Potwierdź
 
-= link_to 'Dodaj dniówke', new_day_path, class: "btn btn-info btn", role: "button"
+%button.btn.btn-danger.hidden#cancel Anuluj
+
+= link_to 'Dodaj dniówke', '#', class: "btn btn-info btn-lg", role: "button", id: "showday"

@@ -7,7 +7,7 @@ footer.footer {
   font-size: 12px;
 }
 
-.well {
+footer.well {
   padding-bottom: 5px;
 }
 .go-right {
@@ -16,6 +16,9 @@ footer.footer {
 
 input {
   &#day_blueberry_kg, &#day_raspberry_kg, &#day_blackberry_kg, &#day_hour_amount {
-    width: 100px;
+    width: 90px;
+  }
+  &#day_date {
+    width: 130px;
   }
 }
