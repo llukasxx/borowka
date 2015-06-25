@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623184813) do
+ActiveRecord::Schema.define(version: 20150625211833) do
 
   create_table "blackberries", force: :cascade do |t|
     t.integer  "day_id"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 20150623184813) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rates", force: :cascade do |t|
+    t.integer  "user_id"
+    t.float    "blueberry",  default: 1.0
+    t.float    "raspberry",  default: 1.0
+    t.float    "blackberry", default: 1.0
+    t.float    "hour",       default: 5.0
+    t.float    "food",       default: 7.0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -67,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150623184813) do
     t.string   "lastname"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "rate_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
