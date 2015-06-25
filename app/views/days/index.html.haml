@@ -1,18 +1,30 @@
-%h1 Dniówki
-
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    - @days.each do |day|
+.panel.panel-primary
+  .panel-heading.bolder Dniówki
+  %table.table
+    %thead
       %tr
-        %td= link_to 'Show', day
-        %td= link_to 'Edit', edit_day_path(day)
-        %td= link_to 'Destroy', day, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Dzień
+        %th Borówka
+        %th Malina
+        %th Jeżyna
+        %th Godziny
+        %th Jedzenie
+        %th Suma
+        %th Akcje
+
+    %tbody
+      - @days.each do |day|
+        %tr
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td
+          %td 
+            =link_to 'Edycja', edit_day_path(day), class: "btn btn-warning btn-sm", role: "button"
+            =link_to 'Usuń', day, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger btn-sm", role: "button"
 
 %br
 =simple_form_for @day, html:{class: "form-inline well hidden"} do |d|
