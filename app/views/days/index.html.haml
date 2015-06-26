@@ -8,7 +8,7 @@
         %th Malina
         %th Jeżyna
         %th Godziny
-        %th Jedzenie
+        %th Wyżywienie
         %th Suma
         %th Akcje
 
@@ -34,7 +34,7 @@
           %td= day.sum
           %td
             =link_to 'Edycja', edit_day_path(day), class: "btn btn-warning btn-sm", role: "button"
-            =link_to 'Usuń', day, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger btn-sm", role: "button"
+            =link_to 'Usuń', day, :method => :delete, :data => { :confirm => 'Jesteś tego pewny?' }, class: "btn btn-danger btn-sm", role: "button"
 
 %br
 =simple_form_for @day, html:{class: "form-inline well hidden"} do |d|
