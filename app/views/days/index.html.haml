@@ -16,11 +16,21 @@
       - @days.each do |day|
         %tr
           %td= day.date
-          %td= day.blueberry.kg
-          %td= day.raspberry.kg
-          %td= day.blackberry.kg
-          %td= day.hour.amount
-          %td= day.food
+          %td
+            =day.blueberry.kg
+            %span.label.label-success="x#{day.blueberry.rate}"
+          %td
+            =day.raspberry.kg
+            %span.label.label-success="x#{day.raspberry.rate}"
+          %td
+            =day.blackberry.kg
+            %span.label.label-success="x#{day.blackberry.rate}"
+          %td
+            =day.hour.amount
+            %span.label.label-success="x#{day.hour.rate}"
+          %td
+            =day.food
+            %span.label.label-success x1
           %td= day.sum
           %td
             =link_to 'Edycja', edit_day_path(day), class: "btn btn-warning btn-sm", role: "button"
