@@ -16,12 +16,12 @@
       - @days.each do |day|
         %tr
           %td= day.date
-          %td= #day.blueberry.kg
-          %td= #day.raspberry.kg
-          %td= #day.blackberry.kg
-          %td= #day.hour.amount
-          %td= #day.food
-          %td= "TBI"
+          %td= day.blueberry.kg
+          %td= day.raspberry.kg
+          %td= day.blackberry.kg
+          %td= day.hour.amount
+          %td= day.food
+          %td= day.sum
           %td
             =link_to 'Edycja', edit_day_path(day), class: "btn btn-warning btn-sm", role: "button"
             =link_to 'Usuń', day, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger btn-sm", role: "button"
@@ -34,7 +34,7 @@
       = d.input :date, as: :date_picker, label: false, input_html: { value: Time.now.strftime("%d/%m/%Y") }
       = d.input :food, as: :hidden, input_html: { value: current_user.rate.food }
     .input-group
-      = d.simple_fields_for blueberry do |b|
+      = d.simple_fields_for :blueberry do |b|
         =b.label "Borówka: "
         =b.input :kg, label: false, input_html: { min: '0', value: '0' }
         =b.input :rate, as: :hidden, input_html:{ value: current_user.rate.blueberry }
@@ -43,7 +43,7 @@
           %br
           =current_user.rate.blueberry
     .input-group
-      = d.simple_fields_for raspberry do |r|
+      = d.simple_fields_for :raspberry do |r|
         =r.label "Malina: "
         =r.input :kg, label: false, input_html: { min: '0', value: '0' }
         =r.input :rate, as: :hidden, input_html: { value: current_user.rate.raspberry }
@@ -52,7 +52,7 @@
           %br
           =current_user.rate.raspberry
     .input-group
-      = d.simple_fields_for blackberry do |b|
+      = d.simple_fields_for :blackberry do |b|
         =b.label "Jeżyna: "
         =b.input :kg, label: false, input_html: { min: '0', value: '0' }
         =b.input :rate, as: :hidden, input_html: { value: current_user.rate.blackberry }
@@ -61,7 +61,7 @@
           %br
           =current_user.rate.blackberry
     .input-group
-      = d.simple_fields_for hour do |h|
+      = d.simple_fields_for :hour do |h|
         =h.label "Godziny:"
         =h.input :amount, label: false, input_html: { min: '0', value: '0' }
         =h.input :rate, as: :hidden, input_html: { value: current_user.rate.hour }

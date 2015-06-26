@@ -2,16 +2,15 @@ class DaysController < ApplicationController
   before_action :set_day, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  expose(:blueberry)
-  expose(:raspberry)
-  expose(:blackberry)
-  expose(:hour)
-
   # GET /days
   # GET /days.json
   def index
-    @days = Day.all
+    @days = current_user.days.decorate
     @day = Day.new
+    @day.blueberry = Blueberry.new
+    @day.raspberry = Raspberry.new
+    @day.blackberry = Blackberry.new
+    @day.hour = Hour.new
   end
 
   # GET /days/1/edit
@@ -66,6 +65,10 @@ class DaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def day_params
-      params.require(:day).permit(:date)
+      params.require(:day).permit(:date, :food, 
+                                  blueberry_attributes:[:id, :kg, :rate], 
+                                  raspberry_attributes:[:id, :kg, :rate], 
+                                  blackberry_attributes:[:id, :kg, :rate], 
+                                  hour_attributes:[:id, :amount, :rate])
     end
 end
