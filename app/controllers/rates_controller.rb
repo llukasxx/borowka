@@ -6,6 +6,17 @@ class RatesController < ApplicationController
   def show
   end
 
+  def update
+    rate = Rate.find(params[:id])
+    if rate.update_attributes(rate_params)
+      flash[:success] = "Kursy zostały zaktualizowane"
+      redirect_to rate_path(rate.id)
+    else
+      flash[:danger] = "Coś poszło nie tak"
+      render 'show'
+    end
+  end
+
   # GET /rates/1
   # GET /rates/1.json
 

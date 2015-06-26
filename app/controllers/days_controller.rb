@@ -14,16 +14,6 @@ class DaysController < ApplicationController
     @day = Day.new
   end
 
-  # GET /days/1
-  # GET /days/1.json
-  def show
-  end
-
-  # GET /days/new
-  def new
-    @day = Day.new
-  end
-
   # GET /days/1/edit
   def edit
   end
@@ -32,15 +22,15 @@ class DaysController < ApplicationController
   # POST /days.json
   def create
     @day = current_user.days.build(day_params)
-
-    respond_to do |format|
-      if @day.save
-        format.html { redirect_to days_path, notice: 'Dodano dniówke! :)' }
-        format.json { render :show, status: :created, location: @day }
-      else
-        format.html { render :new }
-        format.json { render json: @day.errors, status: :unprocessable_entity }
-      end
+    if @day.save
+      redirect_to days_path, notice: 'Dodano dniówke! :)'
+    else
+      flash[:danger] = 'Coś poszło nie tak, upewnij się czy nie podajesz złych parametrów.
+                        Każde pole musi posiadać wartość, zostaw wartość 0 jeżeli nic nie uzbierałeś.
+                        Pamiętaj, że każda dniówka musi mieć unikalną date, 
+                        tzn nie możesz posiadać dwóch dniówek z identyczną datą.
+                        Do połówek używaj \'.\' (kropek) zamiast \',\' (przecinków).'
+      redirect_to days_path
     end
   end
 
@@ -63,7 +53,7 @@ class DaysController < ApplicationController
   def destroy
     @day.destroy
     respond_to do |format|
-      format.html { redirect_to days_url, notice: 'Day was successfully destroyed.' }
+      format.html { redirect_to days_url, notice: 'Pomyślnie usunięto dniówke.' }
       format.json { head :no_content }
     end
   end

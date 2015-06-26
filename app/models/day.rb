@@ -6,4 +6,6 @@ class Day < ActiveRecord::Base
   has_one :hour, dependent: :destroy
   accepts_nested_attributes_for :blueberry
 
+  validates_uniqueness_of :date
+
 end
