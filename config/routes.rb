@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :rates
+  resources :rates, only: [:show, :update]
   resources :days
   root "home#index"
 

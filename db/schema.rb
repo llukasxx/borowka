@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625211833) do
+ActiveRecord::Schema.define(version: 20150626082324) do
 
   create_table "blackberries", force: :cascade do |t|
     t.integer  "day_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150625211833) do
     t.datetime "updated_at", null: false
     t.date     "date"
     t.integer  "user_id"
+    t.float    "food"
   end
 
   create_table "hours", force: :cascade do |t|
