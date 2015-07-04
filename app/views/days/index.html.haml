@@ -15,7 +15,7 @@
     %tbody
       - @days.each do |day|
         %tr
-          %td= day.date
+          %td= day.date.strftime("%d/%m/%Y")
           %td
             =day.blueberry.kg
             %span.label.label-success="x#{day.blueberry.rate}"

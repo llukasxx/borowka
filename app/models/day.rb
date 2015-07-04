@@ -1,4 +1,5 @@
 class Day < ActiveRecord::Base
+  default_scope { order('date ASC') }
   belongs_to :user
   has_one :blueberry, dependent: :destroy
   has_one :raspberry, dependent: :destroy
