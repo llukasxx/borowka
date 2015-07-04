@@ -1,5 +1,5 @@
 class RatesController < ApplicationController
-
+  before_action :check_user
   # GET /rates
   # GET /rates.json
   expose(:rate)
@@ -37,5 +37,9 @@ class RatesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def rate_params
       params.require(:rate).permit(:user_id, :blueberry, :raspberry, :blackberry, :hour, :food)
+    end
+
+    def check_user
+      redirect_to days_path unless current_user == rate.user
     end
 end
