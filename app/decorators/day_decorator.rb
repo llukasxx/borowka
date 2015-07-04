@@ -7,4 +7,5 @@ class DayDecorator < Draper::Decorator
 
     number_to_currency(all, :unit=>'€')
   end
+
 end

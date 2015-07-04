@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'earnings', to: "earnings#index"
+
   resources :rates, only: [:show, :update]
   resources :days
   root "home#index"

@@ -35,6 +35,15 @@
           %td
             =link_to 'Edycja', edit_day_path(day), class: "btn btn-warning btn-sm", role: "button"
             =link_to 'Usuń', day, :method => :delete, :data => { :confirm => 'Jesteś tego pewny?' }, class: "btn btn-danger btn-sm", role: "button"
+      %tr
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td.active.bolder= current_user.all_earnings
+        %td
 
 %br
 =simple_form_for @day, html:{class: "form-inline well hidden"} do |d|

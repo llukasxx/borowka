@@ -8,4 +8,13 @@ class Day < ActiveRecord::Base
 
   validates_uniqueness_of :date, scope: :user
 
+  def Day.total_sum(user)
+    days = user.days
+    sum = 0
+    days.each do |d|
+      sum += d.blueberry.sum + d.raspberry.sum + d.blackberry.sum + d.hour.sum + d.food
+    end
+    sum
+  end
+
 end
