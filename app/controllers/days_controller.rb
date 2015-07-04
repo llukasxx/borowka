@@ -15,6 +15,11 @@ class DaysController < ApplicationController
 
   # GET /days/1/edit
   def edit
+    @day = Day.find(params[:id])
+    @day.blueberry
+    @day.raspberry
+    @day.blackberry
+    @day.hour
   end
 
   # POST /days
@@ -38,7 +43,7 @@ class DaysController < ApplicationController
   def update
     respond_to do |format|
       if @day.update(day_params)
-        format.html { redirect_to @day, notice: 'Day was successfully updated.' }
+        format.html { redirect_to days_path, notice: "Pomyślnie zaaktualizowano dniówke: #{@day.date}" }
         format.json { render :show, status: :ok, location: @day }
       else
         format.html { render :edit }
@@ -52,7 +57,7 @@ class DaysController < ApplicationController
   def destroy
     @day.destroy
     respond_to do |format|
-      format.html { redirect_to days_url, notice: 'Pomyślnie usunięto dniówke.' }
+      format.html { redirect_to days_url, notice: "Pomyślnie usunięto dniówke: #{@day.date}" }
       format.json { head :no_content }
     end
   end

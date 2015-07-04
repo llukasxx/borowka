@@ -10,7 +10,11 @@ class User < ActiveRecord::Base
   has_one :rate, dependent: :destroy
 
   def all_earnings
-    number_to_currency(Day.total_sum(self), :unit=>'€')
+    sum = 0
+    days.each do |d|
+      sum += d.blueberry.sum + d.raspberry.sum + d.blackberry.sum + d.hour.sum + d.food
+    end
+    number_to_currency(sum, :unit=>'€')
   end
 
   private

@@ -1,7 +1,47 @@
-%h1 Editing day
+=simple_form_for @day, html:{class: "form-inline well"} do |d|
+  .form-group
+    .input-group
+      = d.label "Data: "
+      = d.input :date, as: :date_picker, label: false
+      = d.input :food, as: :hidden, input_html: { value: current_user.rate.food }
+    .input-group
+      = d.simple_fields_for :blueberry do |b|
+        =b.label "Borówka: "
+        =b.input :kg, label: false
+        =b.input :rate, as: :hidden
+        .input-group-addon
+          %em kurs:
+          %br
+          =@day.blueberry.rate
+    .input-group
+      = d.simple_fields_for :raspberry do |r|
+        =r.label "Malina: "
+        =r.input :kg, label: false
+        =r.input :rate, as: :hidden
+        .input-group-addon
+          %em kurs:
+          %br
+          =@day.raspberry.rate
+    .input-group
+      = d.simple_fields_for :blackberry do |b|
+        =b.label "Jeżyna: "
+        =b.input :kg, label: false
+        =b.input :rate, as: :hidden
+        .input-group-addon
+          %em kurs:
+          %br
+          =@day.blackberry.rate
+    .input-group
+      = d.simple_fields_for :hour do |h|
+        =h.label "Godziny:"
+        =h.input :amount, label: false
+        =h.input :rate, as: :hidden
+        .input-group-addon
+          %em kurs:
+          %br
+          =@day.hour.rate
 
-= render 'form'
+  = d.button :button, class: "btn btn-success go-right" do
+    Potwierdź
 
-= link_to 'Show', @day
-\|
-= link_to 'Back', days_path
+%em * Jeżeli chcesz zmienić kursy, musisz usunąć dniówke, ustawić odpowiednie kursy i dodać ją ponownie.
